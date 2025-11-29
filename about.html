@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="generator" content="Hugo 0.147.8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>BRM</title>
+<meta name="keywords" content="Infosec, Security, Hacking, CTF, Writeups">
+<meta name="description" content="">
+<meta name="author" content="Bruno Rocha Moura">
+<link rel="canonical" href="https://www.brunorochamoura.com/">
+<link crossorigin="anonymous" href="https://www.brunorochamoura.com/assets/css/stylesheet.9ce9445b89766c32a60c8cbd6e23323de60fc4333926727ac11ac07bc5a6b3e0.css" integrity="sha256-nOlEW4l2bDKmDIy9biMyPeYPxDM5JnJ6wRrAe8Wms+A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://www.brunorochamoura.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.brunorochamoura.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.brunorochamoura.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://www.brunorochamoura.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://www.brunorochamoura.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://www.brunorochamoura.com/index.xml">
+<link rel="alternate" type="application/json" href="https://www.brunorochamoura.com/index.json">
+<link rel="alternate" hreflang="en" href="https://www.brunorochamoura.com/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="./index_1_files/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+
+<script defer="" src="./index_1_files/katex.min.js.download" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
+
+<script defer="" src="./index_1_files/auto-render.min.js.download" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ]
+    });
+});
+</script>
+
+<meta property="og:url" content="https://www.brunorochamoura.com/">
+  <meta property="og:site_name" content="BRM">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="This is my personal blog.
+Cybersecurity and whatever else. If you’re new here, please check the about me page.
+Please consider subscribing to my RSS feed for notifications of new posts.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Home">
+<meta name="twitter:description" content="">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BRM",
+  "url": "https://www.brunorochamoura.com/",
+  "description": "",
+  "thumbnailUrl": "https://www.brunorochamoura.com/favicon.ico",
+  "sameAs": [
+      "https://www.linkedin.com/in/bruno-rocha-moura/", "https://www.youtube.com/@BrunoRochaMoura", "https://github.com/BrunoRochaDev/", "https://app.hackthebox.com/profile/1402920", "https://tryhackme.com/p/brunorochamoura"
+  ]
+}
+</script>
+
+    
+        <script id="MathJax-script" async="" src="./index_1_files/tex-chtml.js.download"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)']]                  
+    }
+  };
+</script>
+</head>
+
+</head>
+
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://www.brunorochamoura.com/" accesskey="h" title="BRM (Alt + H)">GA</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://field-manual.brunorochamoura.com/manual/" title="Field Manual">
+                    <span>Anotações Manual</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.brunorochamoura.com/posts" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.brunorochamoura.com/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.brunorochamoura.com/about" title="About">
+                    <span class="active">Sobre mim</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">Sobre Mim
+    </h1>
+    <div class="post-meta">1 min&nbsp;·&nbsp;Guilherme Assunção Da Silva
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="hello">Olá!<a hidden="" class="anchor" aria-hidden="true" href="https://www.brunorochamoura.com/about/#hello">#</a></h2>
+<p>Meu nome é Guilherme Assunção Da Silva ou abreviando .. Guilherme A.</p>
+
+
+
+  
+  
+    
+  
+  <figure>
+    <a href="assets/gif/me.gif">
+      <img srcset="
+          assets/gif/me.gif 240w,
+          assets/gif/me.gif 320w,
+          assets/gif/me.gif 600w,
+         assets/gif/me.gif  720w,
+          assets/gif/me.gif 400w" src="assets/gif/me.gif" alt="" style="display:block; margin:auto; height:auto;" width="400" height="327">
+    </a>
+  </figure>
+
+
+<p>Comecei este blog em 2025 para compartilhar minha jornada no campo da cibersegurança ofensiva e colocar meus projetos e falar sobre temas que me interessam..</p>
+<p>Se você está começando na área de cibersegurança ou tem curiosidade sobre hacking ético, seja por diversão ou como carreira, espero que encontre algo útil aqui.</p>
+<p>Atualmente, estou buscando uma oportunidade de estágio.</p>
+<h2 id="socials">Redes Sociais<a hidden="" class="anchor" aria-hidden="true" href="https://www.brunorochamoura.com/about/#socials">#</a></h2>
+<p>Geralmente não uso redes sociais mas você pode me encontrar nessas plataformas:</p>
+<ul>
+<li><a href="https://www.linkedin.com/in/bruno-rocha-moura/">LinkedIn</a></li>
+<li><a href="https://github.com/BrunoRochaDev/">GitHub</a></li>
+</ul>
+<h2 id="contact-me">Contato<a hidden="" class="anchor" aria-hidden="true" href="https://www.brunorochamoura.com/about/#contact-me">#</a></h2>
+<p>Você pode me contatar atráves dos seguintes email:</p>
+<ul>
+<li><code>guilhermeassuncao301@gmail.com</code>Para mensagens regulares</li>
+<li><code>work@brunorochamoura.com</code> Para contato profissional</li>
+</ul>
+<p>Se necessario entre em contato via email.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+     <p><a href="https://creativecommons.org/publicdomain/zero/1.0/" style="color: white;">Nenhum direito reservado</a>. Use meus conteúdos livremente de sua própria responsabilidade. Nenhuma permissão é necessária, créditos são bem-vindos.
+    </p>
+</footer>
+<a href="https://www.brunorochamoura.com/about/#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z"></path>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+</body></html>
