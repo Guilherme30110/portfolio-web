@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="generator" content="Hugo 0.147.8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>BRM</title>
+<meta name="keywords" content="Infosec, Security, Hacking, CTF, Writeups">
+<meta name="description" content="">
+<meta name="author" content="Bruno Rocha Moura">
+<link rel="canonical" href="https://www.brunorochamoura.com/">
+<link crossorigin="anonymous" href="https://www.brunorochamoura.com/assets/css/stylesheet.9ce9445b89766c32a60c8cbd6e23323de60fc4333926727ac11ac07bc5a6b3e0.css" integrity="sha256-nOlEW4l2bDKmDIy9biMyPeYPxDM5JnJ6wRrAe8Wms+A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://www.brunorochamoura.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.brunorochamoura.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.brunorochamoura.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://www.brunorochamoura.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://www.brunorochamoura.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://www.brunorochamoura.com/index.xml">
+<link rel="alternate" type="application/json" href="https://www.brunorochamoura.com/index.json">
+<link rel="alternate" hreflang="en" href="https://www.brunorochamoura.com/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="./index_1_files/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+
+<script defer="" src="./index_1_files/katex.min.js.download" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
+
+<script defer="" src="./index_1_files/auto-render.min.js.download" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ]
+    });
+});
+</script>
+
+<meta property="og:url" content="https://www.brunorochamoura.com/">
+  <meta property="og:site_name" content="BRM">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="This is my personal blog.
+Cybersecurity and whatever else. If you’re new here, please check the about me page.
+Please consider subscribing to my RSS feed for notifications of new posts.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Home">
+<meta name="twitter:description" content="">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BRM",
+  "url": "https://www.brunorochamoura.com/",
+  "description": "",
+  "thumbnailUrl": "https://www.brunorochamoura.com/favicon.ico",
+  "sameAs": [
+      "https://www.linkedin.com/in/bruno-rocha-moura/", "https://www.youtube.com/@BrunoRochaMoura", "https://github.com/BrunoRochaDev/", "https://app.hackthebox.com/profile/1402920", "https://tryhackme.com/p/brunorochamoura"
+  ]
+}
+</script>
+
+    
+        <script id="MathJax-script" async="" src="./index_1_files/tex-chtml.js.download"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)']]                  
+    }
+  };
+</script>
+</head>
+
+<body class="list dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://www.brunorochamoura.com/" accesskey="h" title="BRM (Alt + H)">GA</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/posts" title="Posts">
+                    <span class="active">Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" title="Sobre mim">
+                    <span>Sobre Mim</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Posts
+    <a href="https://www.brunorochamoura.com/posts/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9"></path>
+        <path d="M4 4a16 16 0 0 1 16 16"></path>
+        <circle cx="5" cy="19" r="1"></circle>
+      </svg>
+    </a>
+  </h1>
+</header>
+  <div class="post-content"><p>Todas os meus posts. Para temas especificos, olhe as tags</p>
+
+
+  </div>
+  </header>
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://media1.tenor.com/m/rBatCNQP8skAAAAC/terminator-robot.gif 360w ,https://media1.tenor.com/m/rBatCNQP8skAAAAC/terminator-robot.gif 480w ,https://media1.tenor.com/m/rBatCNQP8skAAAAC/terminator-robot.gif 652w" sizes="(min-width: 768px) 720px, 100vw" src="./index_files/cover.png" alt="" width="652" height="132">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">NMAP + Sentinel: Criando ferramenta de monitoramento continúo e envio de email com python
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Este é um projeto POC (prova de conceito) de uma ferramenta nmap personalizado com funções de monitoramento de contínuo.</p>
+  </div>
+  <footer class="entry-footer"><span title="2025-09-24 00:00:00 +0000 UTC">September 24, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Guilherme Assunção Da Silva</footer>
+  <a class="entry-link" aria-label="post link to BRM&#39;s Field Manual Beta Launch" href="https://www.brunorochamoura.com/posts/field-manual-beta/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="assets/images/secai_comptia-icon.png 360w ,assets/images/secai_comptia-icon.png 480w ,assets/images/secai_comptia-icon.png 720w ,assets/images/secai_comptia-icon.png 1080w ,assets/images/secai_comptia-icon.png 1280w" sizes="(min-width: 768px) 720px, 100vw" src="assets/images/secai_comptia-icon.png" alt="" width="1280" height="720">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CompTia SecAI+ Preparação até o exame
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Este será meu guia de preparação até a aprovação para o exame Comptia SecAI+.</p>
+  </div>
+  <footer class="entry-footer"><span title="2025-05-15 00:00:00 +0000 UTC">May 15, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Guilherme Assunção Da Silva </footer>
+  <a class="entry-link" aria-label="post link to HTB CPTS Tips &amp; Tricks: Now in video format!" href="https://www.brunorochamoura.com/posts/cpts-tips-video/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://media1.tenor.com/m/fZBFcgvtnmUAAAAd/ugotamail-hanx.gif 360w ,https://media1.tenor.com/m/fZBFcgvtnmUAAAAd/ugotamail-hanx.gif 480w ,https://media1.tenor.com/m/fZBFcgvtnmUAAAAd/ugotamail-hanx.gif 720w ,https://media1.tenor.com/m/fZBFcgvtnmUAAAAd/ugotamail-hanx.gif 800w" sizes="(min-width: 768px) 720px, 100vw" src="./index_files/cover.gif" alt="" width="800" height="350">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Criando ferramenta de classificação de Email e URL
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Criando ferramenta de alerta e classificação de email e url</p>
+  </div>
+  <footer class="entry-footer"><span title="2025-04-05 00:00:00 +0000 UTC">April 5, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Guilherme Assunção Da Silva </footer>
+  <a class="entry-link" aria-label="post link to Creating A Field Manual" href="https://www.brunorochamoura.com/posts/field-manual/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 360w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 480w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 720w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 1080w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 1205w" sizes="(min-width: 768px) 720px, 100vw" src="./index_files/delphi.png" alt="" width="1205" height="577">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Automatizando OSINT com python + agente de IA
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Usarei um agente de IA em python para automatizar o processo de OSINT, essa é apenas um conceito. Deve ser refinado!</p>
+  </div>
+  <footer class="entry-footer"><span title="2025-01-15 00:00:00 +0000 UTC">January 15, 2025</span>&nbsp;·&nbsp;32 min&nbsp;·&nbsp;Guilherme Assunção Da Silva </footer>
+  <a class="entry-link" aria-label="post link to CBC Padding Oracle Attacks" href="https://www.brunorochamoura.com/posts/cbc-padding-oracle/"></a>
+</article>
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://media1.tenor.com/m/JVrP5Ievj_sAAAAC/insainment-mind-space-apocalypse.gif 360w ,https://media1.tenor.com/m/JVrP5Ievj_sAAAAC/insainment-mind-space-apocalypse.gif 480w ,https://media1.tenor.com/m/JVrP5Ievj_sAAAAC/insainment-mind-space-apocalypse.gif 720w ,https://media1.tenor.com/m/JVrP5Ievj_sAAAAC/insainment-mind-space-apocalypse.gif 771w" sizes="(min-width: 768px) 720px, 100vw" src="./index_files/2024.png" alt="" width="771" height="334">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Invadindo cameras CCTV usando shodan
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A look back at my year in cybersecurity.</p>
+  </div>
+  <footer class="entry-footer"><span title="2024-12-20 00:00:00 +0000 UTC">December 20, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Guilherme Assunção Da Silva</footer>
+  <a class="entry-link" aria-label="post link to The 2024 Retrospective" href="https://www.brunorochamoura.com/posts/2024-retrospective/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 360w ,https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 480w ,https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 720w ,https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 1080w ,https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 1400w" sizes="(min-width: 768px) 720px, 100vw" src="./index_files/PermX.png" alt="" width="1400" height="1138">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Analisa de logs em ambientes Windows
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Analisando logs windows e identificando anomalias e previnindo ataques em ambiente controlado.</p>
+  </div>
+  <footer class="entry-footer"><span title="2024-11-02 00:00:00 +0000 UTC">November 2, 2024</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;Guilherme Assunção Da Silva </footer>
+  <a class="entry-link" aria-label="post link to PermX" href="https://www.brunorochamoura.com/posts/permx/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://www.brunorochamoura.com/posts/page/2/">Próximo&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+     <p><a href="https://creativecommons.org/publicdomain/zero/1.0/" style="color: white;">Nenhum direito reservado</a>. Use meus conteúdos livremente de sua própria responsabilidade. Nenhuma permissão é necessária, créditos são bem-vindos.
+    </p>
+  </footer>
+<a href="https://www.brunorochamoura.com/posts/#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: hidden; opacity: 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z"></path>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+
+</body></html>
