@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>GA</title>
+<meta name="keywords" content="Infosec, Security, Hacking">
+<meta name="description" content="">
+<meta name="author" content="Guilherme Assunção Da Silva">
+<link rel="canonical" href="https://guilherme30110.github.io/portfolio-web/">
+<link rel="stylesheet" href="https://guilherme30110.github.io/portfolio-web/assets/style.css">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<link rel="icon" type="image/png" sizes="16x16" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<script src="../assets//css/prism.css"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+<!-- Linguagens extras (adicione só as que usar) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-powershell.min.js"></script>
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<style>
+
+pre[class*="language-"] {
+  background: #282828;
+  margin: 0;
+  padding: 16px;
+  border-radius: 8px;
+  white-space: pre;
+  word-break: normal;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block !important;
+  word-break: normal !important;
+  white-space: pre !important;
+  overflow-wrap: normal !important;
+}
+
+</style>
+</head>
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="#top" accesskey="h" title="GA (Alt + H)">GA</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://guilherme30110.github.io/portfolio-web/posts" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://guilherme30110.github.io/portfolio-web/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://guilherme30110.github.io/portfolio-web/about" title="About">
+                    <span>Sobre Mim</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title entry-hint-parent">
+      Fazendo analise de logs e eventos em Windows 
+    </h1>
+    <div class="post-meta"><span title="2025-11-02 00:00:00 +0000 UTC">Novembro 2, 2025</span>&nbsp;·&nbsp;10 min&nbsp;·&nbsp;Guilherme Assunção Da Silva</div>
+  </header> 
+  <figure class="entry-cover">
+   <img loading="eager"  srcset="https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 360w ,https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 480w ,https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 720w , https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png 800w" sizes="(min-width: 768px) 720px, 100vw" src="https://logmanager.com/wp-content/uploads/2025/03/log-analysis-title-img.png" alt="" width="800" height="350">
+  </figure>
+  <div class="post-content"><p>Neste post trago uma simulação básica de análise de logs no Windows, aplicando conceitos que venho estudando na área de Blue Team e resposta a incidentes. O objetivo foi reproduzir, em ambiente controlado, algumas técnicas comuns utilizadas por atacantes e demonstrar como essas ações deixam rastros nos logs do sistema. Nada aqui representa um cenário real ou avançado, mas sim uma introdução prática a como um analista SOC começa a investigar eventos suspeitos.
+  <br><br>Antes de iniciar a simulação, habilitei recursos de auditoria que o Windows mantém desativados por padrão. O principal deles foi o Script Block Logging, que faz com que o sistema registre o conteúdo real de scripts PowerShell executados, inclusive comandos enviados de forma ofuscada. Sem essa configuração ativa, boa parte das evidências simplesmente não seria capturada nos logs.
+  <br><br>
+  Com o ambiente preparado, executei uma sequência de comandos simulando ações comuns pós-comprometimento: criação de usuário local, adição ao grupo de administradores, criação de tarefa agendada para persistência e execução de um comando encodado em Base64, técnica utilizada para tentar ocultar o que está sendo executado. O ponto de partida da investigação foi uma notificação do Microsoft Defender indicando ameaça detectada. Em um ambiente corporativo real, esse gatilho poderia vir de um SIEM, de um alerta de EDR ou até de uma anomalia identificada durante um monitoramento de rotina.
+  </p>
+<hr>
+<figure>
+    <a href="../assets/images/Captura-de-tela-2026-07-02-001833.png">
+        <img
+            src="../assets/images/Captura-de-tela-2026-07-02-001833.png"
+            srcset="
+                ../assets/images/Captura-de-tela-2026-07-02-001833.png 240w,
+                ../assets/images/Captura-de-tela-2026-07-02-001833.png 320w,
+                ../assets/images/Captura-de-tela-2026-07-02-001833.png 530w,
+                ../assets/images/Captura-de-tela-2026-07-02-001833.png 600w,
+                ../assets/images/Captura-de-tela-2026-07-02-001833.png 720w"
+            alt="Visualization of how ECB leaks patterns in the plaintext. Left is original (plaintext), right is encrypted (ciphertext)."
+            style="display:block; margin:auto; height:auto;"
+            width="530"
+            height="314">
+    </a>
+</figure>
+
+
+<p>Com o alerta como ponto de partida, o próximo passo foi buscar eventos potencialmente maliciosos nos logs do sistema. Acessei o Visualizador de Eventos e naveguei até o log Operational do PowerShell, onde o Script Block Logging registra toda atividade de scripts executados. O Event ID 4104 é o principal indicador nesse contexto, pois captura o conteúdo de cada bloco de script, independente de ter sido enviado de forma ofuscada ou não.
+<br><br>Analisando os eventos registrados no mesmo horário do alerta, identifiquei um evento 4104 com a categoria "Executar um Comando Remoto". Ao inspecionar o conteúdo, o Windows já havia decodificado automaticamente o comando que havia sido enviado em Base64, expondo o que foi realmente executado. Isso demonstra na prática o valor do Script Block Logging: a ofuscação não impede o registro, o sistema captura o conteúdo real independente do formato em que chegou.</p>
+
+<figure>
+    <a href="../assets/images/Captura-de-tela-2026-07-02-003538.png">
+        <img
+            src="../assets/images/Captura-de-tela-2026-07-02-003538.png"
+            srcset="
+                ../assets/images/Captura-de-tela-2026-07-02-003538.png 240w,
+                ../assets/images/Captura-de-tela-2026-07-02-003538.png 320w,
+                ../assets/images/Captura-de-tela-2026-07-02-003538.png 530w,
+                ../assets/images/Captura-de-tela-2026-07-02-003538.png 600w,
+                ../assets/images/Captura-de-tela-2026-07-02-003538.png 720w"
+            alt="Visualization of how ECB leaks patterns in the plaintext. Left is original (plaintext), right is encrypted (ciphertext)."
+            style="display:block; margin:auto; height:auto;"
+            width="530"
+            height="314">
+    </a>
+</figure>
+
+<p>Com o timestamp dos eventos em mãos, a análise seguiu para o log de Segurança, buscando eventos relacionados a gerenciamento de contas e alterações de privilégios no mesmo período. Os Event IDs 4720 e 4732 registram respectivamente a criação de uma conta de usuário e a adição dessa conta a um grupo privilegiado. Esses dois eventos juntos indicam uma tentativa clássica de criação de backdoor via conta local, garantindo acesso persistente ao sistema mesmo que a sessão original seja encerrada.</p>
+
+<figure>
+    <a href="../assets/images/Captura-de-tela-2026-07-02-003737.png">
+        <img
+            src="../assets/images/Captura-de-tela-2026-07-02-003737.png"
+            srcset="
+                ../assets/images/Captura-de-tela-2026-07-02-003737.png 240w,
+                ../assets/images/Captura-de-tela-2026-07-02-003737.png 320w,
+                ../assets/images/Captura-de-tela-2026-07-02-003737.png 530w,
+                ../assets/images/Captura-de-tela-2026-07-02-003737.png 600w,
+                ../assets/images/Captura-de-tela-2026-07-02-003737.png 720w"
+            alt="Visualization of how ECB leaks patterns in the plaintext. Left is original (plaintext), right is encrypted (ciphertext)."
+            style="display:block; margin:auto; height:auto;"
+            width="530"
+            height="314">
+    </a>
+</figure>
+
+<p>Essa simulação deixou claro como ações que parecem simples deixam rastros evidentes nos logs do Windows, desde que a auditoria esteja corretamente configurada. A sequência de eventos, notificação do Defender, comando encodado capturado pelo Script Block Logging e criação de usuário privilegiado, conta a história completa do que aconteceu e em que ordem. Na prática, esse seria o ponto de partida para uma contenção e remediação, removendo o usuário criado, deletando a tarefa agendada e investigando como o acesso inicial foi obtido.</p>
+
+<p>Abaixo estão os comandos executados e que poderia ser executados seguindo a mesma linha em uma invasão real, com ofuscação de comando</p>
+<pre><code class="language-powershell"># Cria um usuário local chamado porttest, simulando a criação de uma conta backdoor
+net user porttest P@ssword123 /add
+
+# Adiciona o usuário ao grupo de Administradores, escalando privilégios
+net localgroup Administradores porttest /add
+
+# Cria um segundo usuário para reforçar a persistência
+net user porttest2 P@ssword123 /add
+
+# Adiciona o segundo usuário ao grupo de Administradores
+net localgroup Administradores porttest2 /add
+
+# Cria uma tarefa agendada que executa PowerShell na inicialização do sistema
+# as flags -nop e -w hidden são usadas para tentar ocultar a execução
+schtasks /create /tn "WindowsHealthCheck" /tr "powershell.exe -nop -w hidden -c Write-Output test" /sc onlogon /ru System
+
+# Converte um comando para Base64 e executa de forma ofuscada
+# técnica usada para tentar esconder o conteúdo real do que está sendo executado
+$cmd = "Write-Output 'Simulando aqui um payload encodado'"
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($cmd)
+$encoded = [Convert]::ToBase64String($bytes)
+powershell.exe -EncodedCommand $encoded
+
+# Cria um arquivo EICAR, detectado pelo Defender como ameaça
+$eicar = 'X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*'
+Set-Content -Path "$env:TEMP\eicar_test.txt" -Value $eicar
+
+# Busca eventos suspeitos no log de Segurança do Windows
+# cobre criação de usuário, adição a grupos, tarefas agendadas e logins
+Get-WinEvent -LogName Security | Where-Object {$_.Id -in @(4720,4732,4698,4625,4624,4688)} | Select-Object TimeCreated, Id, Message | Sort-Object TimeCreated -Descending | Format-List
+
+# Busca no Script Block Log os comandos PowerShell executados
+# o Event ID 4104 registra o conteúdo real mesmo que tenha chegado ofuscado
+Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" | Where-Object {$_.Id -eq 4104} | Select-Object TimeCreated, Message | Sort-Object TimeCreated -Descending | Format-List
+
+# Confirma a detecção do Defender com timestamp e arquivo identificado
+Get-MpThreatDetection | Select-Object InitialDetectionTime, ThreatName, Resources | Format-List
+</code></pre>
+
+<hr>
+  <footer class="post-footer">
+    <ul class="post-tags">
+     <li><a href="https://guilherme30110.github.io/portfolio-web/tags/cybersec">CyberSec 🛡️</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <p><a href="https://creativecommons.org/publicdomain/zero/1.0/" style="color: white;">Nenhum direito reservado</a>. Use meus conteúdos livremente de sua própria responsabilidade. Nenhuma permissão é necessária, créditos são bem-vindos.
+    </p>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: hidden; opacity: 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z"></path>
+    </svg>
+</a>
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+</body><script>
+</script></html>

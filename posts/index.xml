@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GA - Guilherme Assunção Da Silva</title>
+    <link>https://guilherme30110.github.io/portfolio-web/</link>
+    <description>Cybersecurity and whatever else.</description>
+    <generator>Static RSS</generator>
+    <language>pt-br</language>
+    <atom:link href="https://guilherme30110.github.io/portfolio-web/posts/index.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>Criando honeypot SSH básico em python</title>
+      <link>https://guilherme30110.github.io/portfolio-web/posts/honeypot</link>
+      <pubDate>Wed, 24 Dec 2025 00:00:00 GMT</pubDate>
+      <guid>https://guilherme30110.github.io/portfolio-web/posts/honeypot</guid>
+      <description>Honeypot SSH em Python com Paramiko, simulando um shell falso para capturar credenciais, comandos e IPs de atacantes, com log de tudo em tempo real.</description>
+    </item>
+
+    <item>
+      <title>Aprovado na CompTia SecAI+</title>
+      <link>https://guilherme30110.github.io/portfolio-web/posts/secai_aprovacao</link>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 GMT</pubDate>
+      <guid>https://guilherme30110.github.io/portfolio-web/posts/secai_aprovacao</guid>
+      <description>Falando sobre minha aprovação no exame.</description>
+    </item>
+
+    <item>
+      <title>Criando ferramenta de classificação de Email e URL</title>
+      <link>https://guilherme30110.github.io/portfolio-web/posts/classificacao</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 GMT</pubDate>
+      <guid>https://guilherme30110.github.io/portfolio-web/posts/classificacao</guid>
+      <description>Criando ferramenta de alerta e classificação de email e url</description>
+    </item>
+
+    <item>
+      <title>Automatizando OSINT com python + agente de IA</title>
+      <link>https://guilherme30110.github.io/portfolio-web/posts/osint_tool</link>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <guid>https://guilherme30110.github.io/portfolio-web/posts/osint_tool</guid>
+      <description>Usarei um agente de IA em python para automatizar o processo de OSINT, essa é apenas um conceito. Deve ser refinado!</description>
+    </item>
+
+    <item>
+      <title>CompTia SecAI+ Preparação até o exame</title>
+      <link>https://guilherme30110.github.io/portfolio-web/posts/prepara%C3%A7%C3%A3o_secai</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 GMT</pubDate>
+      <guid>https://guilherme30110.github.io/portfolio-web/posts/prepara%C3%A7%C3%A3o_secai</guid>
+      <description>Este será meu guia de preparação até a aprovação para o exame Comptia SecAI+.</description>
+    </item>
+
+    <item>
+      <title>Analisa de logs em ambientes Windows</title>
+      <link>https://guilherme30110.github.io/portfolio-web/posts/analise_logs</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 GMT</pubDate>
+      <guid>https://guilherme30110.github.io/portfolio-web/posts/analise_logs</guid>
+      <description>Analisando logs windows e identificando anomalias e previnindo ataques em ambiente controlado.</description>
+    </item>
+
+  </channel>
+</rss>

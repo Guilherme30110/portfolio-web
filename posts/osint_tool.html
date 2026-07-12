@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>GA</title>
+<meta name="keywords" content="Infosec, Security, Hacking">
+<meta name="description" content="">
+<meta name="author" content="Guilherme Assunção Da Silva">
+<link rel="canonical" href="https://guilherme30110.github.io/portfolio-web/">
+<link rel="stylesheet" href="https://guilherme30110.github.io/portfolio-web/assets/style.css">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<link rel="icon" type="image/png" sizes="16x16" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/220669121?s=400&u=9b4786d6174b34ae6eedd77b3a992dc8516a521b&v=4">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="stylesheet" href="https://guilherme30110.github.io/portfolio-web/assets//css/prism.css">
+
+
+
+<!-- Linguagens extras (adicione só as que usar) -->
+<script src="https://guilherme30110.github.io/portfolio-web/assets/js/prism.js"></script>
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<style>
+
+.ga-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 530px;
+    margin: 16px auto;
+    outline: none;
+  }
+  .ga-carousel-track {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1c1c1c;
+  }
+  .ga-carousel-img {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .ga-carousel-img.active {
+    display: block;
+  }
+  .ga-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .ga-carousel-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #555;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background 0.2s;
+  }
+  .ga-carousel-dot.active {
+    background: #eee;
+  }
+
+pre[class*="language-"] {
+  background: #282828;
+  margin: 0;
+  padding: 16px;
+  border-radius: 8px;
+  white-space: pre;
+  word-break: normal;
+  overflow-x: auto;
+}
+
+pre code {
+  display: block !important;
+  word-break: normal !important;
+  white-space: pre !important;
+  overflow-wrap: normal !important;
+}
+
+</style>
+</head>
+<body class=" dark" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="#top" accesskey="h" title="GA (Alt + H)">GA</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://guilherme30110.github.io/portfolio-web/posts" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://guilherme30110.github.io/portfolio-web/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://guilherme30110.github.io/portfolio-web/about" title="About">
+                    <span>Sobre Mim</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title entry-hint-parent">
+      Automatizando OSINT com python + Agente de IA
+    </h1>
+    <div class="post-meta"><span title="2026-05-15 00:00:00 +0000 UTC">Maio 15, 2026</span>&nbsp;·&nbsp;16 min&nbsp;·&nbsp;Guilherme Assunção Da Silva</div>
+  </header> 
+  <figure class="entry-cover">
+   <img loading="lazy" srcset="https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 360w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 480w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 720w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 1080w ,https://media1.tenor.com/m/3l4Ky00EA8IAAAAC/liam-neeson-i-will-find-you.gif 1205w" sizes="(min-width: 768px) 720px, 100vw" src="./index_files/delphi.png" alt="" width="1205" height="577">
+  </figure>
+  <div class="post-content"><p>Este projeto nasceu da minha necessidade de automatizar investigações de fontes abertas, transformando um alvo inicial, um nome ou CPF em um dossiê estruturado, sem precisar executar cada etapa manualmente. A estrutura principal é construída sobre <strong>LangGraph</strong>, biblioteca que me permitiu montar o agente como uma máquina de estados, onde um modelo de linguagem local (rodando via Ollama) atua como o "cérebro" da operação, decidindo a cada passo qual ferramenta usar com base no que já foi coletado.
+    <pre><code class="language">Digite o nome ou cpf do alvo: CPF ou Nome Completo aqui
+Diga o que você deseja buscar: Busque informações com base no dado fornecido, procure informação do email teste@gmail.com e do site www.teste.com.br
+    </code></pre>
+
+    <h2>Arquitetura: por que uma state machine</h2>
+    <br>Optei por LangGraph em vez de um loop simples porque a investigação precisa ramificar de forma condicional, nem toda investigação precisa passar por todos os nós. O grafo tem roteadores que decidem o caminho com base em flags extraídas pela própria IA:
+    <br><br>O flag <code>has_cpf</code> controla se o nó de processos judiciais é acionado, pesquisar só por nome geraria volume de resultado inviável de filtrar automaticamente, então essa etapa fica condicionada à existência de um identificador mais específico. Depois da verificação de vazamentos, o grafo decide entre seguir para processos (se houver CPF) ou pular direto para a checagem de mandados. Também existe uma trava de segurança: se o nó de raciocínio passar de 6 tentativas sem o modelo decidir finalizar sozinho, o grafo força o encerramento da fase de busca e empurra a execução adiante, evita que o agente entre em loop gerando dorks indefinidamente.
+    <br><br>Também implementei persistência via <code>SqliteSaver</code>, usando o nome do alvo como thread_id. Isso significa que a investigação tem memória entre execuções: se eu rodar o mesmo alvo de novo, o LangGraph recupera o estado salvo em vez de começar do zero, útil tanto para retomar uma investigação interrompida quanto para não gastar chamadas repetindo buscas já feitas.
+
+    <h2>O nó de raciocínio: como o agente decide a próxima dork</h2>
+    <br>Essa foi a parte que mais refinei. Na primeira versão, o modelo combinava várias entidades numa dork só, nome, CPF e cidade na mesma busca, por exemplo, e isso praticamente garantia zero resultado, porque cada operador adicional restringe ainda mais um universo de busca que já é pequeno. Reescrevi o prompt do agente com um princípio central: testar entidades isoladas antes de combiná-las, seguindo uma lógica de especificidade.
+    <br><br>Algumas regras que ficaram no prompt final: identificadores exatos (CPF, e-mail, telefone, nome completo) sempre entre aspas, com operadores como <code>site:</code>, <code>filetype:</code>, <code>OR</code> fora das aspas. Quando existe mais de uma variação do mesmo dado, o agente combina as variações numa única dork via OR, em vez de gastar uma tentativa em cada formato separadamente. Uma entidade só pode ser combinada com operador de fonte depois que a busca isolada dela já retornou pelo menos um resultado com conteúdo real. Se uma dork não retorna nada, o agente é instruído a não insistir em variações do mesmo termo, e sim mudar de entidade ou de estratégia.
+    <br><br>O modelo roda com temperature=0, porque previsibilidade de formato importa mais do que criatividade aqui, preciso que ele siga a estrutura JSON esperada sem alucinar campos, já que o parsing da resposta alimenta diretamente o roteamento do grafo.
+
+    <h2>Consulta WHOIS</h2>
+    <br>Sempre que uma dork retorna uma URL nova, ou o usuário menciona um domínio no prompt, o agente prioriza consultar o WHOIS antes de continuar buscando, a lógica é enriquecer qualquer domínio relevante assim que ele aparece, em vez de deixar para o final.
+    <br><br>Um cuidado que precisei adicionar na análise final: nem todo dado que aparece no WHOIS de um domínio pertence de fato ao alvo pesquisado. Tive um caso real onde o CPF do registrante do domínio era diferente do CPF pesquisado, nesse cenário, o resumo final não pode tratar e-mails e nomes desse WHOIS como se fossem do alvo. Isso virou uma regra explícita no prompt de geração de resumo: tratar cada artefato de forma isolada e só declarar vínculo com o alvo principal quando o conteúdo do resultado comprovar isso de forma explícita.
+
+    <h2>Verificação de vazamentos</h2>
+    <br>Uso a API do HackMyIP para checar se os e-mails extraídos do prompt do usuário aparecem em vazamentos conhecidos. Não é tão atualizada quanto serviços como o HaveIBeenPwned, mas cumpre bem o papel de triagem inicial dentro do fluxo e por ser gratuita/simples de integrar, encaixou melhor no escopo do projeto.
+
+    <h2>Resolução automatizada de CAPTCHA</h2>
+    <br>Para garantir que o agente opere de forma totalmente autônoma, sem que a necessidade de uma intervenção humana interrompa ou congele o fluxo da investigação, foi necessário desenvolver uma função específica para lidar com as barreiras de reCAPTCHA nos portais de consulta. A técnica utilizada para executar o bypass muda completamente a abordagem lógica tradicional: em vez de tentar decifrar os desafios visuais de imagens, o script aciona a opção de acessibilidade da plataforma. O bot interage com a página, realiza o download do desafio em formato de áudio, trata o arquivo e utiliza uma biblioteca local de reconhecimento de voz (SpeechRecognition) para transcrever o áudio em texto puro. Esse resultado é injetado diretamente no campo do formulário, resolvendo a validação de forma automatizada e liberando o acesso às informações de mandados de prisão ou internação, dados que são fundamentais em qualquer análise de risco em OSINT.
+    <br><br>Por interagir diretamente e transpor os mecanismos de segurança e proteção anti-automação do serviço, essa etapa exige cuidados rigorosos. Todo o desenvolvimento e os testes dessa função de bypass foram conduzidos de maneira estritamente controlada dentro do meu posto de trabalho, contando com a autorização formal do responsável pelos sistemas afetados. Reforço que essa permissão é restrita, pontual e totalmente vinculada ao contexto de homologação desse projeto específico. Por questões de prudência e em respeito aos termos de uso das fontes consultadas, os detalhes técnicos e a implementação exata do código não serão expostos publicamente, e essa solução não deve ser interpretada como um aval genérico para automatizar acessos ou burlar proteções fora do escopo desse acordo.
+
+    <h2>Processos judiciais e mandados</h2>
+    <br>O agente consulta fontes públicas/oficiais para processos judiciais e mandados de prisão em aberto, mas essa etapa só é ativada quando existe CPF ou nome identificado no prompt, isso evita gerar ruído (e requisições desnecessárias) quando não há identificador suficiente para uma busca precisa. Essa parte do pipeline lida com proteções anti-automação nas fontes consultadas; não vou detalhar publicamente a técnica usada para isso, por prudência em relação aos termos de uso dessas fontes.
+    <br><br>Essa etapa específica foi desenvolvida e testada no contexto do meu posto de trabalho, com autorização formal do responsável pelos sistemas envolvidos. Reforço que essa autorização é pontual e vinculada a esse contexto, não é uma permissão genérica, e não deve ser interpretada como validação para automatizar acesso a essas mesmas fontes fora desse acordo.
+
+    <h2>Fonte privada (removida da versão pública)</h2>
+    <br>Cheguei a implementar, como prova de conceito local, uma integração com uma base de dados privada que cruzava CPF com nome, telefone, endereço e filiação. Optei por não distribuir nem manter essa integração ativa na versão pública do projeto por talvez ser incompatível com  a LGPD e o escopo que quero manter aqui é o de fontes abertas. Para ilustrar como ficava a saída, deixo abaixo um print com todos os dados pessoais que seria integrado junto ao relatorio final em PDF:
+    <br><br><figure>
+     <a href="../assets/images/Captura-de-tela-2026-07-08-003655.png">
+        <img
+            src="../assets/images/Captura-de-tela-2026-07-08-003655.png"
+            srcset="
+                ../assets/images/Captura-de-tela-2026-07-08-003655.png 240w,
+                ../assets/images/Captura-de-tela-2026-07-08-003655.png 320w,
+                ../assets/images/Captura-de-tela-2026-07-08-003655.png 530w,
+                ../assets/images/Captura-de-tela-2026-07-08-003655.png 600w,
+                ../assets/images/Captura-de-tela-2026-07-08-003655.png 720w"
+            alt="Visualization of how ECB leaks patterns in the plaintext. Left is original (plaintext), right is encrypted (ciphertext)."
+            style="display:block; margin:auto; height:auto;"
+            width="530"
+            height="314">
+     </a>
+     </figure>
+
+    <h2>Geração do relatório final</h2>
+    <br>Quando a fase de coleta termina, o agente compila todos os resultados de dorks, WHOIS, vazamentos, processos, mandados, e usa o LLM para redigir um resumo analítico em texto corrido, sem markdown ou listas, seguindo diretrizes específicas de formatação e de isolamento entre artefatos (para não inventar vínculo entre dado e alvo sem evidência). O relatório final é montado com Jinja2 e renderizado em PDF via WeasyPrint, entregando um documento estruturado e pronto pra leitura, sem eu precisar formatar nada manualmente.
+    <div class="ga-carousel" id="ga-carousel-dossie" tabindex="0" aria-label="Galeria de prints, use as setas do teclado para navegar">
+     <div class="ga-carousel-track">
+      <img class="ga-carousel-img active" src="../assets/images/Captura-de-tela-2026-07-07-145750.png" alt="">
+      <img class="ga-carousel-img" src="../assets/images/Captura-de-tela-2026-07-08-032932.png" alt="">
+      <img class="ga-carousel-img" src="../assets/images/Captura de tela 2026-07-08-033039.png" alt="">
+      <img class="ga-carousel-img" src="../assets/images/Captura de tela 2026-07-08-033054.png" alt="">
+      <!-- Adicione mais prints aqui, um <img> por linha, mesmo padrão de classe -->
+      <!-- <img class="ga-carousel-img" src="assets/img/dossie-privado-2.png" alt="Print censurado 2 do dossiê da fonte privada"> -->
+      <!-- <img class="ga-carousel-img" src="assets/img/dossie-privado-3.png" alt="Print censurado 3 do dossiê da fonte privada"> -->
+     </div>
+     <div class="ga-carousel-dots"></div>
+   </div>
+    <br><br>Toda a lógica de como esses agentes conversam entre si, as decisões de roteamento e a integração com as ferramentas de inteligência estão devidamente documentadas no código. Quem quiser dar uma olhada e entender como montei essa arquitetura, o repositório completo está disponível no meu GitHub: <a href="https://github.com/Guilherme30110/osint-ai">https://github.com/Guilherme30110/osint-ai</a>
+    
+</p>
+<hr>
+  <footer class="post-footer">
+    <ul class="post-tags">
+     <li><a href="https://guilherme30110.github.io/portfolio-web/tags/cybersec">CyberSec 🛡️</a></li>
+     <li><a href="https://guilherme30110.github.io/portfolio-web/tags/cybersec">OSINT 🕵️‍♂️</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <p><a href="https://creativecommons.org/publicdomain/zero/1.0/" style="color: white;">Nenhum direito reservado</a>. Use meus conteúdos livremente de sua própria responsabilidade. Nenhuma permissão é necessária, créditos são bem-vindos.
+    </p>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: hidden; opacity: 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z"></path>
+    </svg>
+</a>
+<script>
+    (function () {
+    const root = document.getElementById('ga-carousel-dossie');
+    if (!root) return;
+    const imgs = Array.from(root.querySelectorAll('.ga-carousel-img'));
+    const dotsWrap = root.querySelector('.ga-carousel-dots');
+    let current = 0;
+
+    imgs.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'ga-carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Ir para print ' + (i + 1));
+      dot.addEventListener('click', () => show(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.querySelectorAll('.ga-carousel-dot'));
+
+    function show(index) {
+      if (index < 0 || index >= imgs.length) return;
+      imgs[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index;
+      imgs[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') show((current + 1) % imgs.length);
+      if (e.key === 'ArrowLeft') show((current - 1 + imgs.length) % imgs.length);
+    });
+  })();
+
+
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+</body></html>
